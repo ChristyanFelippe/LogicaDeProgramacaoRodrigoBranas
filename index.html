@@ -1,0 +1,72 @@
+<html>
+    <script>
+
+        function calculaRendimentos (valor) {
+            rendimento = valor * 0.005
+            return rendimento
+        }
+
+        function calculaJuros (valor) {
+            juros = valor * 0.005
+            return juros
+        }
+        function calcularSaldo (salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao) {
+            saldo = salario - aluguel - contaDeAgua - contaDeLuz - internet - transporte - lazer - alimentacao
+                if (saldo >= 0) {
+                rendimento = calculaRendimentos(saldo)
+                console.log("Saldo antes do rendimento " + saldo)
+                saldo = saldo + rendimento
+                console.log("Rendimentos deste mês: " + rendimento)
+                console.log("Saldo depois do rendimento " + saldo)
+                } else {
+                calculaJuros(saldo)
+                console.log("Saldo antes do rendimento " + saldo)
+                saldo = saldo + juros
+                console.log("Juros deste mês : " + juros)
+                console.log("Saldo depois do rendimento " + saldo)
+            }
+        return saldo
+        }
+
+
+        // Janeiro
+        console.log("###############################")
+        console.log("#########  Janeiro  ###########")
+        salario= 3000
+        aluguel= 1000
+        contaDeAgua= 200
+        contaDeLuz= 100
+        internet= 100
+        transporte= 300
+        lazer= 300
+        alimentacao= 500
+        saldo1 = calcularSaldo(salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
+        
+        // Fevereiro
+        console.log("###############################")
+        console.log("########  Fevereiro  ##########")
+        salario= 3000
+        aluguel= 1200
+        contaDeAgua= 250
+        contaDeLuz= 100
+        internet= 100
+        transporte= 500
+        lazer= 0
+        alimentacao= 1000
+        saldo2 = calcularSaldo(salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
+
+            // Março
+        salario = 4000
+        aluguel = 1200
+        contaDeAgua = 200
+        contaDeLuz = 100
+        internet = 200
+        transporte = 500
+        lazer = 800
+        alimentacao = 1000
+        console.log("###############################")
+        console.log("##########  Março  ############")
+        saldo3 = calcularSaldo(salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
+
+    </script>
+</html>
