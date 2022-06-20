@@ -1,36 +1,38 @@
 <html>
     <script>
 
+        function arredondar(valor) {
+            return Math.round(valor*100)/100
+        }
+
         function calculaRendimentos (valor) {
-            rendimento = valor * 0.005
+            rendimento = arredondar(valor * 0.005)
             return rendimento
         }
 
         function calculaJuros (valor) {
-            juros = valor * 0.005
+            juros = arredondar(valor * 0.005)
             return juros
         }
-        function calcularSaldo (salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao) {
-            saldo = salario - aluguel - contaDeAgua - contaDeLuz - internet - transporte - lazer - alimentacao
+        function calcularSaldo (saldoInicial, salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao) {
+            saldo = saldoInicial + salario - aluguel - contaDeAgua - contaDeLuz - internet - transporte - lazer - alimentacao
                 if (saldo >= 0) {
-                rendimento = calculaRendimentos(saldo)
+                rendimento = arredondar(calculaRendimentos(saldo))
                 console.log("Saldo antes do rendimento " + saldo)
-                saldo = saldo + rendimento
+                saldo = arredondar(saldo + rendimento)
                 console.log("Rendimentos deste mês: " + rendimento)
                 console.log("Saldo depois do rendimento " + saldo)
                 } else {
-                calculaJuros(saldo)
+                arredondar(calculaJuros(saldo))
                 console.log("Saldo antes do rendimento " + saldo)
-                saldo = saldo + juros
+                saldo = arredondar(saldo + juros)
                 console.log("Juros deste mês : " + juros)
                 console.log("Saldo depois do rendimento " + saldo)
             }
         return saldo
         }
 
-
-        // Janeiro
-        console.log("###############################")
+        saldoInicial = 0
         console.log("#########  Janeiro  ###########")
         salario= 3000
         aluguel= 1000
@@ -40,10 +42,8 @@
         transporte= 300
         lazer= 300
         alimentacao= 500
-        saldo1 = calcularSaldo(salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
-        
-        // Fevereiro
-        console.log("###############################")
+        saldo1 = calcularSaldo(saldoInicial, salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
+
         console.log("########  Fevereiro  ##########")
         salario= 3000
         aluguel= 1200
@@ -53,9 +53,9 @@
         transporte= 500
         lazer= 0
         alimentacao= 1000
-        saldo2 = calcularSaldo(salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
+        saldo2 = calcularSaldo(saldo1, salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
 
-            // Março
+        console.log("##########  Março  ############")
         salario = 4000
         aluguel = 1200
         contaDeAgua = 200
@@ -64,9 +64,10 @@
         transporte = 500
         lazer = 800
         alimentacao = 1000
-        console.log("###############################")
-        console.log("##########  Março  ############")
-        saldo3 = calcularSaldo(salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
+
+        saldo3 = calcularSaldo(saldo2, salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao)
+        console.log("Saldo acumulado do ano : " + saldo3)
+        
 
     </script>
 </html>
